@@ -4,7 +4,7 @@ import * as v from 'valibot';
 import { get_session } from '$lib/auth.remote';
 import { db } from '$lib/server/db';
 import { description, user_progress } from '$lib/server/db/schema';
-import { ORDERED_IDS, TOTAL, get_replacement } from '$lib/replacements';
+import { ORDERED_IDS, TOTAL, get_replacement, get_mappings_for } from '$lib/replacements';
 
 async function get_next_module_id(user_id: string) {
 	const done = await db
@@ -43,6 +43,7 @@ export const get_current = query(async () => {
 	return {
 		module_id,
 		replacement,
+		mappings: get_mappings_for(module_id),
 		progress: {
 			done: done_set.size,
 			submitted: submitted_count,

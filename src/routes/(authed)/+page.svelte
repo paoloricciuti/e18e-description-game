@@ -13,6 +13,18 @@
 
 			<h1 class="module-name">{data.module_id}</h1>
 
+			{#if data.mappings.length > 0}
+				<div class="replaces-section">
+					<div class="section-label">REPLACES</div>
+					<hr class="section-rule replaces-rule" />
+					<div class="replaces-chips">
+						{#each data.mappings as pkg (pkg)}
+							<span class="replaces-chip">{pkg}</span>
+						{/each}
+					</div>
+				</div>
+			{/if}
+
 			{#if data.progress.wrapped}
 				<div class="wrapped-banner">▲ YOU HAVE DESCRIBED ALL MODULES — STARTING OVER</div>
 			{/if}
@@ -161,6 +173,33 @@
 		color: var(--black);
 		margin: 0 0 1.5rem 0;
 		text-transform: none;
+	}
+
+	/* Replaces section */
+	.replaces-section {
+		margin-bottom: 1.5rem;
+	}
+
+	.replaces-rule {
+		margin-bottom: 0.75rem;
+	}
+
+	.replaces-chips {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.4rem;
+	}
+
+	.replaces-chip {
+		display: inline-block;
+		background: var(--code-bg);
+		color: var(--black);
+		font-family: 'Courier New', Courier, monospace;
+		font-size: 0.72rem;
+		font-weight: 400;
+		letter-spacing: 0.03em;
+		padding: 0.2rem 0.5rem;
+		border: 1px solid var(--black);
 	}
 
 	.wrapped-banner {
