@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { get_current, skip, submit } from '../game.remote';
+	import { get_current, skip, skip_to_first_missing, submit } from '../game.remote';
 
 	let data = $derived(await get_current());
 	let details_open = $state(false);
@@ -118,6 +118,10 @@
 				<form {...skip}>
 					<input {...skip.fields.module_id.as('hidden', data.module_id)} />
 					<button type="submit" class="btn btn-skip">SKIP</button>
+				</form>
+
+				<form {...skip_to_first_missing}>
+					<button type="submit" class="btn btn-skip">SKIP TO FIRST MISSING →</button>
 				</form>
 			</div>
 		</div>
@@ -478,7 +482,7 @@
 	.btn-skip {
 		background: var(--white);
 		color: var(--black);
-		margin-bottom: 1.5rem;
+		margin-bottom: 0.5rem;
 	}
 
 	.btn-skip:hover {

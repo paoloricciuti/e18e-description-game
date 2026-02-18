@@ -104,3 +104,38 @@ export const skip = form(skip_schema, async ({ module_id }) => {
 			set: { status: 'skipped' }
 		});
 });
+
+export const skip_to_first_missing = form(v.object({}), async () => {
+	const session = await get_session();
+
+	// Find the first module_id (alphabetically) that has no description from any user
+	const described = await db.selectDistinct({ module_id: description.module_id }).from(description);
+	const described_set = new Set(described.map((r) => r.module_id));
+
+	const target = ORDERED_IDS.find((id) => !described_set.has(id));
+	if (!target) return; // every module has at least one description — nothing to do
+
+	// Mark all modules that come before target (and aren't already done) as skipped
+	const already_done = await db
+		.select({ module_id: user_progress.module_id })
+		.from(user_progress)
+		.where(eq(user_progress.user_id, session.user.id));
+	const done_set = new Set(already_done.map((r) => r.module_id));
+
+	const to_skip = ORDERED_IDS.slice(0, ORDERED_IDS.indexOf(target)).filter(
+		(id) => !done_set.has(id)
+	);
+
+	if (to_skip.length > 0) {
+		await db
+			.insert(user_progress)
+			.values(
+				to_skip.map((module_id) => ({
+					user_id: session.user.id,
+					module_id,
+					status: 'skipped' as const
+				}))
+			)
+			.onConflictDoNothing();
+	}
+});
