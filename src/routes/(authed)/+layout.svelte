@@ -20,6 +20,8 @@
 		<span class="sep">·</span>
 		<a href="/leaderboard">LEADERBOARD</a>
 		<span class="sep">·</span>
+		<a href="/my-submissions">MINE</a>
+		<span class="sep">·</span>
 		{#if session.user}
 			<form {...logout}>
 				<button type="submit" class="btn btn-logout">LOGOUT</button>
