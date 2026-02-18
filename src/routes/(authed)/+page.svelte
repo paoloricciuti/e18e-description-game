@@ -203,7 +203,7 @@
 		padding: 0.75rem;
 		margin: 0;
 		border-top: 2px solid var(--black);
-		background: var(--white);
+		background: var(--code-bg);
 		overflow-x: auto;
 		white-space: pre-wrap;
 		word-break: break-all;

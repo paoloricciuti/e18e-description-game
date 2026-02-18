@@ -10,6 +10,23 @@
 	--border: 2px solid #111111;
 	--font-display: 'Barlow Condensed', sans-serif;
 	--font-body: 'Barlow', sans-serif;
+	--code-bg: #e8e8e4;
+	--row-hover: #e8e7e2;
+	--row-viewer: #ececea;
+	--row-viewer-hover: #e0dfda;
+}
+
+@media (prefers-color-scheme: dark) {
+	:root {
+		--black: #f0ede4;
+		--white: #141414;
+		--mid: #aaaaaa;
+		--border: 2px solid #f0ede4;
+		--code-bg: #1e1e1e;
+		--row-hover: #222222;
+		--row-viewer: #1c1c1c;
+		--row-viewer-hover: #282828;
+	}
 }
 
 body {

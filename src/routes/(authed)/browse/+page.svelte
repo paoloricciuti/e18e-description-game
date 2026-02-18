@@ -247,7 +247,7 @@
 
 	/* ── CODE BLOCK ──────────────────────────────────────── */
 	pre {
-		background: #e8e8e4;
+		background: var(--code-bg);
 		border-left: 4px solid var(--black);
 		padding: 1rem 1.25rem;
 		overflow-x: auto;

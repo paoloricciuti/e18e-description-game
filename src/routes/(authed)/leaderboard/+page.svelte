@@ -167,12 +167,12 @@
 	}
 
 	.data-row:hover td {
-		background: #e8e7e2;
+		background: var(--row-hover);
 	}
 
 	/* Viewer highlight */
 	.data-row.viewer td {
-		background: #ececea;
+		background: var(--row-viewer);
 	}
 
 	.data-row.viewer td:first-child {
@@ -181,7 +181,7 @@
 	}
 
 	.data-row.viewer:hover td {
-		background: #e0dfda;
+		background: var(--row-viewer-hover);
 	}
 
 	/* ── Rank cell ── */
@@ -218,9 +218,7 @@
 
 	/* ── Player cell ── */
 	.player-cell {
-		display: flex;
-		align-items: center;
-		gap: 0.75rem;
+		vertical-align: middle;
 	}
 
 	.avatar {
@@ -228,8 +226,9 @@
 		height: 2rem;
 		border-radius: 0;
 		object-fit: cover;
-		flex-shrink: 0;
+		vertical-align: middle;
 		border: 1.5px solid var(--black);
+		margin-right: 0.75rem;
 	}
 
 	.player-name {
