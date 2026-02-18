@@ -1,12 +1,4 @@
 <script lang="ts">
-	import './+layout.css';
-	import '@fontsource/barlow-condensed/300.css';
-	import '@fontsource/barlow-condensed/700.css';
-	import '@fontsource/barlow-condensed/900.css';
-	import '@fontsource/barlow/300.css';
-	import '@fontsource/barlow/400.css';
-	import '@fontsource/barlow/600.css';
-	import favicon from '$lib/assets/favicon.svg';
 	import { get_session, logout } from '$lib/auth.remote';
 
 	let { children } = $props();
@@ -15,10 +7,6 @@
 
 	const session = $derived(await get_session());
 </script>
-
-<svelte:head>
-	<link rel="icon" href={favicon} />
-</svelte:head>
 
 <header>
 	<div class="logo-group">
