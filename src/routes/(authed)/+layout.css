@@ -1,0 +1,25 @@
+* {
+	box-sizing: border-box;
+}
+
+:root {
+	--black: #111111;
+	--white: #f8f7f2;
+	--red: #e63111;
+	--mid: #555555;
+	--border: 2px solid #111111;
+	--font-display: 'Barlow Condensed', sans-serif;
+	--font-body: 'Barlow', sans-serif;
+}
+
+body {
+	background: var(--white);
+	color: var(--black);
+	font-family: var(--font-body);
+	margin: 0;
+	padding: 0;
+}
+
+a {
+	color: inherit;
+}

@@ -49,6 +49,9 @@
 		"vitest-browser-svelte": "^2.0.2"
 	},
 	"dependencies": {
-		"module-replacements": "file:module-replacements-1.0.0.tgz"
+		"@fontsource/barlow": "^5.2.8",
+		"@fontsource/barlow-condensed": "^5.2.8",
+		"module-replacements": "file:module-replacements-1.0.0.tgz",
+		"valibot": "^1.2.0"
 	}
 }
