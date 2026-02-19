@@ -19,7 +19,12 @@
 					<hr class="section-rule replaces-rule" />
 					<div class="replaces-chips">
 						{#each data.mappings as pkg (pkg)}
-							<span class="replaces-chip">{pkg}</span>
+							<a
+								class="replaces-chip"
+								href="https://www.npmjs.com/package/{pkg}"
+								target="_blank"
+								rel="noopener noreferrer">{pkg}</a
+							>
 						{/each}
 					</div>
 				</div>
@@ -48,6 +53,14 @@
 					<span class="ref-label">REF</span>
 					<a class="ref-link" href={data.replacement.url} target="_blank" rel="noopener noreferrer"
 						>{data.replacement.url}</a
+					>
+				</div>
+			{:else if data.replacement.type === 'documented' && 'url' in data.replacement && data.replacement.url !== undefined && typeof data.replacement.url === 'object' && data.replacement.url.type === 'e18e'}
+				{@const e18e_url = `https://github.com/es-tooling/module-replacements/blob/schema-v3-poc/docs/modules/${data.replacement.url.id}.md`}
+				<div class="ref-block">
+					<span class="ref-label">REF</span>
+					<a class="ref-link" href={e18e_url} target="_blank" rel="noopener noreferrer"
+						>{e18e_url}</a
 					>
 				</div>
 			{/if}
